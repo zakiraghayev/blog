@@ -168,3 +168,6 @@ config/settings/*
 !config/settings/common.py
 !config/settings/dev.example.py
 !config/settings/prod.example.py
+
+static
+media
