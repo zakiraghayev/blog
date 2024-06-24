@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Yeni Məqalə{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mt-5">Yeni Məqalə</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_title" class="form-label">Başlıq</label>
+                    <input type="text" name="title" class="form-control" id="id_title" required>
+                    {% if form.title.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.title.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label for="id_content" class="form-label">Məzmun</label>
+                    <textarea name="content" class="form-control" id="id_content" required></textarea>
+                    {% if form.content.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.content.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label for="id_categories" class="form-label">Kateqoriyalar</label>
+                    <select multiple name="categories" class="form-select" id="id_categories">
+                        {% for category in form.categories.field.queryset %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                    {% if form.categories.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.categories.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mt-3">Yarat</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
