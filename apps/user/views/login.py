@@ -3,6 +3,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.views import View
+from django.contrib.auth import logout
+
 from apps.user.forms import LoginForm
 
 
@@ -23,3 +25,9 @@ class LoginView(View):
             else:
                 form.add_error(None, 'İstifadəçi adı və ya şifrə yanlışdır.')
         return render(request, 'user/login.html', {'form': form})
+
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('home')

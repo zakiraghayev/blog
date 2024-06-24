@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Ana səhifə{% endblock %}
+
+{% block content %}
+<h1 class="my-4">Məqalələr</h1>
+<div class="list-group">
+    {% for article in articles %}
+        <a href="{% url 'article_detail' article.id %}" class="list-group-item list-group-item-action">
+            <h5 class="mb-1">{{ article.title }}</h5>
+            <p class="mb-1">{{ article.content|truncatewords:30 }}</p>
+            <small>{{ article.author.username }} tərəfindən {{ article.created_at }}</small>
+        </a>
+    {% empty %}
+        <div class="list-group-item">
+            <h5 class="mb-1">Heç bir məqalə tapılmadı</h5>
+            <p class="mb-1">Hazırda heç bir məqalə yoxdur. Zəhmət olmasa sonra yenidən yoxlayın.</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
