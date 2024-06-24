@@ -6,6 +6,7 @@ from apps.blog.views import HomeView
 from apps.blog.views import ArticleCreateView
 from apps.blog.views import WeatherAPIView
 from apps.blog.views import LikeArticleView
+from apps.blog.views import ArticleDetailView
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
@@ -16,5 +17,11 @@ urlpatterns = [
         LikeArticleView.as_view(),
         name='like_article'
     ),
+    path(
+        'article/<int:article_id>/',
+        ArticleDetailView.as_view(),
+        name='article_detail'
+    ),
+
 
 ]
