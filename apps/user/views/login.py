@@ -19,7 +19,7 @@ class LoginView(View):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('index')
+                return redirect('home')
             else:
                 form.add_error(None, 'İstifadəçi adı və ya şifrə yanlışdır.')
         return render(request, 'user/login.html', {'form': form})
