@@ -32,10 +32,14 @@ The `settings` folder contains the following files:
     # from config.settings.production import *
     ```
 
+5. Create `.env` file in root of the project, and add the content of `.template.env` file
+    then set the value for the variables.
+
+
 ## Running the Project
 
 To create the containers and run the Django web server, execute the following command:
-
+The command below will also install requirements 
 ```sh
 docker-compose up --build
 ```
