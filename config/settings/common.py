@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     # Apps
     "apps.blog.apps.BlogConfig",
     "apps.user.apps.UserConfig",
+    "apps.info.apps.InfoConfig",
 
     # 3rd party libs
     "rest_framework",
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
