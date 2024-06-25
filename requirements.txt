@@ -4,3 +4,6 @@ psycopg2-binary
 djangorestframework
 requests
 django-cors-headers
+
+dj-database-url
+whitenoise

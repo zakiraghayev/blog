@@ -168,7 +168,7 @@ config/settings/*
 !config/settings/common.py
 !config/settings/dev.example.py
 !config/settings/prod.example.py
-!config/settings/deployment.py
+!config/settings/heroku.py
 
 static
 media
