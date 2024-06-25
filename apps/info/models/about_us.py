@@ -1,10 +1,9 @@
 from django.db import models
-from ckeditor.fields import RichTextField
 
 
 class AboutUs(models.Model):
     title = models.CharField(max_length=200, default="Haqqımızda")
-    content = RichTextField()
+    content = models.TextField()
 
     class Meta:
         verbose_name = "Haqqımızda"

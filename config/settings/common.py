@@ -45,7 +45,6 @@ INSTALLED_APPS = [
 
     # 3rd party libs
     "rest_framework",
-    "ckeditor",
 ]
 
 MIDDLEWARE = [
