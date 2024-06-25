@@ -1,13 +1,6 @@
 from .common import *
 import os
-import dj_database_url
 
-# Update the database configuration with dj-database-url
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
-    )
-}
 
 # Allow all host headers
 ALLOWED_HOSTS = ['.herokuapp.com']
