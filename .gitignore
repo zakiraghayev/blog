@@ -168,6 +168,7 @@ config/settings/*
 !config/settings/common.py
 !config/settings/dev.example.py
 !config/settings/prod.example.py
+!config/settings/deployment.py
 
 static
 media
