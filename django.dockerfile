@@ -19,6 +19,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of your application code to the container
 COPY . .
 
+# Check if config/settings folder contains production.py, if not, copy prod.example.py and create production.py
+RUN if [ ! -f config/settings/production.py ]; then cp config/settings/prod.example.py config/settings/production.py; fi
+
 # Create a non-root user and switch to it
 RUN adduser --disabled-password --gecos '' nonrootuser
 
