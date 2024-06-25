@@ -17,24 +17,36 @@ services:
     restart: "always"
     command: >
       bash -c "
-                python manage.py makemigrations &
-                python manage.py migrate &
+                python manage.py makemigrations &&
+                python manage.py migrate &&
+                python manage.py collectstatic --noinput &&
                 python manage.py runserver 0.0.0.0:8000
               "
     volumes:
       - ./volumes/django/media:/usr/src/app/media
       - ./volumes/django/static:/usr/src/app/static
-      - .:/usr/src/app
-
-    ports:
-      - "8000:8000"
     env_file: .env
     depends_on:
       - pgdb
     links:
       - pgdb
-  
-  
-volumes:
-  pgdata:
-  django:
+
+  nginx:
+    image: nginx:latest
+    container_name: blog-nginx
+    restart: "always"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./volumes/django/static:/usr/src/app/static:ro
+      - ./volumes/django/media:/usr/src/app/media:ro
+    depends_on:
+      - django
+    command: >
+      sh -c "
+        mkdir -p /etc/nginx/ssl &&
+        openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/key.pem -out /etc/nginx/ssl/cert.pem -subj '/CN=localhost' &&
+        nginx -g 'daemon off;'
+      "
