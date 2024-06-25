@@ -1,2 +1,2 @@
-from config.settings.development import *
-# from config.settings.production import *
+# from config.settings.development import *
+from config.settings.production import *

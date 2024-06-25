@@ -16,3 +16,7 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
     "localhost",
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+]
