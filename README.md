@@ -11,29 +11,10 @@ The `settings` folder contains the following files:
 
 ## Initial Setup
 
-1. In the `settings` folder, the `__init__.py` file should contain the following lines:
-
-    ```python
-    from config.settings.development import *
-    # from config.settings.production import *
-    ```
-
-2. Create a file named `production.py` or `development.py` based on your environment.
-
-3. Copy the content from `prod.example.py` or `dev.example.py` to the newly created file (`production.py` or `development.py`).
-
-4. In the `__init__.py` file, uncomment the appropriate line that matches your environment:
-
-    ```python
-    # For development environment
-    from config.settings.development import *
-    
-    # For production environment
-    # from config.settings.production import *
-    ```
-
-5. Create `.env` file in root of the project, and add the content of `.template.env` file
-    then set the value for the variables.
+1. Create a file named `production.py` or `development.py` based on your environment
+2. Copy the content from `prod.example.py` or `dev.example.py` to the newly created file (`production.py` or `development.py`).
+3. Create `.env` file in root of the project, and add the content of `.template.env` file then set the value for the variables.
+4. Make sure you have set `ENVIRONMENT` value as your file name you have created at `1.` 
 
 
 ## Running the Project
